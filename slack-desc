@@ -1,0 +1,13 @@
+libcaca: libcaca (the industry-standard colour ASCII-art library)
+libcaca:
+libcaca: libcaca is a graphics library that outputs text instead of pixels,
+libcaca: so that it can work on older video cards or text terminals. It is not
+libcaca: unlike the famous AAlib library, with the following improvements:
+libcaca:   * Unicode support
+libcaca:   * 2048 available colours (some devices can only handle 16)
+libcaca:   * dithering of colour images
+libcaca:   * advanced text canvas operations (blitting, rotations) 
+libcaca: Libcaca works in a text terminal (and should thus work on all Unix
+libcaca: systems including Mac OS X) using the S-Lang or ncurses libraries.
+libcaca: It also works natively on DOS and Windows. 
+libcaca: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
