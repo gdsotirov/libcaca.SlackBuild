@@ -19,7 +19,7 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: libcaca.SlackBuild,v 1.4 2015/05/30 14:20:31 gsotirov Exp $
+# $Id: libcaca.SlackBuild,v 1.5 2015/05/30 15:07:10 gsotirov Exp $
 #
 
 . ../../slack-package.conf
@@ -54,6 +54,11 @@ cd $TMP
 tar -xvf $CWD/$NAME-$VERSION.tar.gz || exit 3
 cd $SRC
 fix_source
+
+# Stange but, it's necessary provide the correct -I for caca.h and others under 64 bit
+if [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="$SLKCFLAGS -I../caca"
+fi
 
 CFLAGS=$SLKCFLAGS \
 CXXFLAGS=$SLKCFLAGS \
