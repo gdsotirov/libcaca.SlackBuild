@@ -1,2 +1,4 @@
+jdk
+mono >= 3.12.1
 python >= 2.7
 ruby >= 1.9.3
