@@ -19,7 +19,7 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: libcaca.SlackBuild,v 1.6 2016/09/01 14:54:54 gsotirov Exp $
+# $Id: libcaca.SlackBuild,v 1.7 2016/09/01 15:17:33 gsotirov Exp $
 #
 
 . ../../slack-package.conf
@@ -60,6 +60,11 @@ if [ "$ARCH" = "x86_64" ]; then
   SLKCFLAGS="$SLKCFLAGS -I../caca"
 fi
 
+# Apply patch if any
+if [ -e $CWD/${NAME}-${VERSION}.diff ]; then
+  patch -p1 -b -z.orig < $CWD/${NAME}-${VERSION}.diff || exit 4
+fi
+
 CFLAGS=$SLKCFLAGS \
 CXXFLAGS=$SLKCFLAGS \
 ./configure --build=$ARCH-slackware-linux \
@@ -81,11 +86,11 @@ CXXFLAGS=$SLKCFLAGS \
             --enable-ruby \
             --enable-imlib2 \
             --enable-plugins \
-            --disable-doc || exit 4
+            --disable-doc || exit 5
 #           --enable-doc # Fails to build pdf
 
-make V=1 -j4 || exit 5
-make V=1 DESTDIR=$PKG install || exit 6
+make V=1 -j4 || exit 6
+make V=1 DESTDIR=$PKG install || exit 7
 
 bin_perms $PKG
 ( cd $PKG; strip_bin; strip_lib )
@@ -104,6 +109,9 @@ install -m 755 -d $SBDIR
 install -m 644 $CWD/slack-desc       $SBDIR/slack-desc
 install -m 644 $CWD/slack-required   $SBDIR/slack-required
 install -m 644 $CWD/slack-suggests   $SBDIR/slack-suggests
+if [ -e $CWD/${NAME}-${VERSION}.diff ]; then
+  install -m 644 $CWD/${NAME}-${VERSION}.diff $SBDIR/${NAME}-${VERSION}.diff
+fi
 install -m 644 $CWD/$NAME.SlackBuild $SBDIR/$NAME.SlackBuild
 
 PKGNAME=$NAME-$VERSION-$ARCH-$BUILD$MYIN
