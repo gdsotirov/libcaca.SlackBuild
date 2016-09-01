@@ -1,0 +1,14 @@
+# Use main header to avoid compilation issues
+# Copyright (C) 2016 Georgi D. Sotirov <gdsotirov@dir.bg>
+diff -urNad libcaca-0.99.beta17-orig/caca/driver/gl.c libcaca-0.99.beta17/caca/driver/gl.c
+--- libcaca-0.99.beta17-orig/caca/driver/gl.c	2010-02-08 14:34:28.000000000 +0200
++++ libcaca-0.99.beta17/caca/driver/gl.c	2016-09-01 15:46:10.000000000 +0300
+@@ -26,7 +26,7 @@
+ #else
+ #   include <GL/gl.h>
+ #   include <GL/glut.h>
+-#   include <GL/freeglut_ext.h>
++#   include <GL/freeglut.h>
+ #endif
+ 
+ #include <string.h>
