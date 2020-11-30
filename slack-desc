@@ -10,4 +10,4 @@ libcaca:   * advanced text canvas operations (blitting, rotations)
 libcaca: Libcaca works in a text terminal (and should thus work on all Unix
 libcaca: systems including Mac OS X) using the S-Lang or ncurses libraries.
 libcaca: It also works natively on DOS and Windows. 
-libcaca: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
+libcaca: Packaged by Georgi D. Sotirov <gdsotirov@gmail.com>
